@@ -1,0 +1,14 @@
+  if (CustomDyeingOrderAcc.IsDupplicated(model.color_code_number, customer_id) == null)
+            {
+                if (ModelState.IsValid)
+                {
+
+                    CustomDyeingOrderAcc.Update(id, model, vc_color_code);
+
+                    //return Json(new { message = string.Format(Resources.Vietcon.MESSAGE_UPDATE_DDH_SUCCESS, model.bar_code), grid_name = "grid_new_dyeing_order_list", type = MessageType.success.ToString() }, JsonRequestBehavior.AllowGet);
+
+                    return PartialView("_closeEditWindow");
+                }
+            }
+            else
+                Cas.Helpers.Sessions.AddMessage(Cas.Helpers.SessionKeyList.message_success, string.Format(Resources.Vietcon.DUPPLICATED_DATA, model.color_code_number, MessageType.error.ToString()));

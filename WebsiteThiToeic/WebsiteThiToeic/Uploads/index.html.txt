@@ -1,0 +1,34 @@
+public ActionResult UpdateDonGiaThongTinChung(int customer_id,int? NgayThanhToan,string PhiMeNhuom,string GhiChu)
+        {
+            CustomCustomerAcc.UpdateDonGiaThongTinChung(customer_id,NgayThanhToan,PhiMeNhuom,GhiChu);
+
+            return Json(new { message = string.Format(Resources.NotifyMessages.ADD_SUCCESS, ""), type = MessageType.success.ToString(), grid_name = "all" }, JsonRequestBehavior.AllowGet);
+            //return View("_CloseWindow");
+        }
+
+
+  public void UpdateDonGiaThongTinChung(int cus_id,int? NgayThanhToan,string PhiMeNhuom,string GhiChu)
+        {
+            try
+            {
+                List<SqlParameter> listParameters = new List<SqlParameter>();
+                listParameters.Add(new SqlParameter("customer_id", cus_id));
+                listParameters.Add(new SqlParameter("NgayThanhToan", NgayThanhToan));
+                listParameters.Add(new SqlParameter("PhiMeNhuom", PhiMeNhuom));
+                listParameters.Add(new SqlParameter("GhiChu", GhiChu));
+
+
+                DBUtils.ExecDataSetSP(null, "sp_vc_update_dongia_thongtinchung", listParameters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+ public ActionResult AjaxViewPriceInfo(int id)
+        {
+            ViewBag.ID = id;
+            var model=CustomCustomerAcc.GetDonGiaThongTinChungByCustomerId(id);
+            return PartialView("_AjaxViewPriceInfo", model);
+        }

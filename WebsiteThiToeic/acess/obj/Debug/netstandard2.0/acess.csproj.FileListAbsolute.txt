@@ -1,0 +1,9 @@
+F:\ĐồÁnTốtNghiệp\WebsiteThiToeic\acess\bin\Debug\netstandard2.0\acess.deps.json
+F:\ĐồÁnTốtNghiệp\WebsiteThiToeic\acess\bin\Debug\netstandard2.0\acess.dll
+F:\ĐồÁnTốtNghiệp\WebsiteThiToeic\acess\bin\Debug\netstandard2.0\acess.pdb
+F:\ĐồÁnTốtNghiệp\WebsiteThiToeic\acess\obj\Debug\netstandard2.0\acess.csprojResolveAssemblyReference.cache
+F:\ĐồÁnTốtNghiệp\WebsiteThiToeic\acess\obj\Debug\netstandard2.0\acess.csproj.CoreCompileInputs.cache
+F:\ĐồÁnTốtNghiệp\WebsiteThiToeic\acess\obj\Debug\netstandard2.0\acess.AssemblyInfoInputs.cache
+F:\ĐồÁnTốtNghiệp\WebsiteThiToeic\acess\obj\Debug\netstandard2.0\acess.AssemblyInfo.cs
+F:\ĐồÁnTốtNghiệp\WebsiteThiToeic\acess\obj\Debug\netstandard2.0\acess.dll
+F:\ĐồÁnTốtNghiệp\WebsiteThiToeic\acess\obj\Debug\netstandard2.0\acess.pdb

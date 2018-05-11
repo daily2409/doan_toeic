@@ -1,0 +1,53 @@
+create proc vc_sp_add_don_gia_log
+@flag int,
+@id int,
+@NgayHieuLuc datetime,
+@LoaiHinh int,
+@MatHang int,
+@LoaiSoi nvarchar(50),
+@ChiSoSoi nvarchar(50),
+@DonGia float,
+@TienTe int,
+@TongMau int,
+@HaoHut float,
+@GhiChu nvarchar(max)
+as
+begin
+declare @action_name nvarchar(200), @NgayHieuLuc_old datetime, @LoaiHinh_old int, @MatHang_old int,
+   @LoaiSoi_old nvarchar(50), @ChiSoSoi_old nvarchar(50),@DonGia_old float,@TienTe_old int,@TongMau_old int,
+   @HaoHut_old float,@GhiChu_old nvarchar(max), @ischange bit = 0
+
+   --log
+   select @NgayHieuLuc_old=NgayHieuLuc ,@LoaiHinh_old=LoaiHinh, @MatHang_old=MatHang, @LoaiSoi=LoaiSoi,
+    @ChiSoSoi_old=ChiSoSoi,@DonGia_old	=DonGia, @TienTe= TienTe, @TongMau_old=TongMau ,@HaoHut_old= HaoHut, @GhiChu_old=GhiChu	
+   from vc_DonGia 
+   where id=@id
+
+   set @action_name = 'Stt:'+@id+': '
+
+    if @LoaiSoi <> @LoaiSoi_old
+	 begin
+		set @ischange = 1
+		set @action_name += N'Lo?i S?i ( Old: '+ @LoaiSoi_old +', New: '+ @LoaiSoi+' )'
+	 end
+	else
+		begin
+			set @ischange = 1
+			set @action_name += N'Lo?i S?i:'+@LoaiSoi
+		end
+	if @NgayHieuLuc<>@NgayHieuLuc_old
+	 begin
+		 set @ischange =1
+		 set @action_name+=N'Ngày Hi?u L?c ( Old: '+ @NgayHieuLuc_old +', New: '+ @NgayHieuLuc+' )'
+	 end
+	if @LoaiHinh<>@LoaiHinh_old
+	 begin
+		 set @ischange =1
+		 set @action_name+=N'Lo?i Hình ( Old: '+ @LoaiHinh_old +', New: '+ @LoaiHinh+' )'
+	 end
+	if @LoaiHinh<>@LoaiHinh_old
+	 begin
+		 set @ischange =1
+		 set @action_name+=N'M?t Hàng ( Old: '+ @MatHang_old +', New: '+ @MatHang+' )'
+	 end
+end
