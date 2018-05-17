@@ -44,12 +44,6 @@ namespace WebsiteThiToeic.Access.EF
 
             modelBuilder.Entity<LISTENNING>()
                 .HasMany(e => e.QUESTIONS)
-                .WithRequired(e => e.LISTENNING)
-                .HasForeignKey(e => e.LIS_ID)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<LISTENNING>()
-                .HasMany(e => e.TESTs)
                 .WithOptional(e => e.LISTENNING)
                 .HasForeignKey(e => e.LIS_ID);
 
@@ -74,8 +68,9 @@ namespace WebsiteThiToeic.Access.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<PICTURE>()
-                .HasOptional(e => e.VOCABULARY)
-                .WithRequired(e => e.PICTURE);
+                .HasMany(e => e.VOCABULARies)
+                .WithOptional(e => e.PICTURE)
+                .HasForeignKey(e => e.PIC_ID);
 
             modelBuilder.Entity<QUESTION>()
                 .Property(e => e.CONTENT)
@@ -103,20 +98,24 @@ namespace WebsiteThiToeic.Access.EF
 
             modelBuilder.Entity<READING>()
                 .HasMany(e => e.QUESTIONS)
-                .WithRequired(e => e.READING)
-                .HasForeignKey(e => e.REA_ID)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<READING>()
-                .HasMany(e => e.TESTs)
                 .WithOptional(e => e.READING)
-                .HasForeignKey(e => e.RED_ID);
+                .HasForeignKey(e => e.REA_ID);
 
             modelBuilder.Entity<ROLE>()
                 .HasMany(e => e.USERs)
                 .WithRequired(e => e.ROLE)
                 .HasForeignKey(e => e.ROL_ID)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<TEST>()
+                .HasMany(e => e.LISTENNINGs)
+                .WithOptional(e => e.TEST)
+                .HasForeignKey(e => e.TES_ID);
+
+            modelBuilder.Entity<TEST>()
+                .HasMany(e => e.READINGs)
+                .WithOptional(e => e.TEST)
+                .HasForeignKey(e => e.TES_ID);
 
             modelBuilder.Entity<THEME>()
                 .HasMany(e => e.VOCABULARies)
@@ -149,10 +148,6 @@ namespace WebsiteThiToeic.Access.EF
             modelBuilder.Entity<USER>()
                 .Property(e => e.EMAIL)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<VOCABULARY>()
-                .Property(e => e.PIC_ID)
-                .IsFixedLength();
 
             modelBuilder.Entity<VOCABULARY>()
                 .Property(e => e.WORD)

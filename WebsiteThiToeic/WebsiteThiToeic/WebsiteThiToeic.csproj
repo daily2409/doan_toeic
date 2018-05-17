@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Biz.Lib.Helpers">
+      <HintPath>G:\Bizcell\TACM\Biz.TACM\references\Biz.Lib.Helpers.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -56,6 +59,15 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -121,9 +133,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.ApplicationInsights">
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
@@ -169,8 +178,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DOCUMENTsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LISTENNINGsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PARTsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PICTUREsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QUESTIONsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\READINGsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ROLEsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TESTsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\THEMEsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TITLEsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\USERsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VOCABULARiesController.cs" />
+    <Compile Include="Controllers\DoccumentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\TESTsController.cs" />
+    <Compile Include="Controllers\LearnController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -205,6 +226,7 @@
     <Content Include="Content\contact_styles.css" />
     <Content Include="Content\courses_responsive.css" />
     <Content Include="Content\courses_styles.css" />
+    <Content Include="Content\cus_js\JavaScript.js" />
     <Content Include="Content\elements_responsive.css" />
     <Content Include="Content\elements_styles.css" />
     <Content Include="Content\images\author.jpg" />
@@ -277,7 +299,43 @@
     <Content Include="Content\news_post_styles.css" />
     <Content Include="Content\news_responsive.css" />
     <Content Include="Content\news_styles.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\plugins\easing\easing.js" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\css\fontawesome-all.css" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\plugins\greensock\animation.gsap.min.js" />
+    <Content Include="Content\plugins\greensock\ScrollToPlugin.min.js" />
+    <Content Include="Content\plugins\greensock\TimelineMax.min.js" />
+    <Content Include="Content\plugins\greensock\TweenMax.min.js" />
+    <Content Include="Content\plugins\OwlCarousel2-2.2.1\animate.css" />
+    <Content Include="Content\plugins\OwlCarousel2-2.2.1\owl.carousel.css" />
+    <Content Include="Content\plugins\OwlCarousel2-2.2.1\owl.carousel.js" />
+    <Content Include="Content\plugins\OwlCarousel2-2.2.1\owl.theme.default.css" />
+    <Content Include="Content\plugins\OwlCarousel2-2.2.1\owl.video.play.png" />
+    <Content Include="Content\plugins\progressbar\progressbar.min.js" />
+    <Content Include="Content\plugins\scrollmagic\ScrollMagic.min.js" />
+    <Content Include="Content\plugins\scrollTo\jquery.scrollTo.min.js" />
     <Content Include="Content\responsive.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\styles\bootstrap4\bootstrap.min.css" />
+    <Content Include="Content\styles\bootstrap4\bootstrap.min.js" />
+    <Content Include="Content\styles\bootstrap4\popper.js" />
+    <Content Include="Content\styles\contact_responsive.css" />
+    <Content Include="Content\styles\contact_styles.css" />
+    <Content Include="Content\styles\courses_responsive.css" />
+    <Content Include="Content\styles\courses_styles.css" />
+    <Content Include="Content\styles\elements_responsive.css" />
+    <Content Include="Content\styles\elements_styles.css" />
+    <Content Include="Content\styles\main_styles.css" />
+    <Content Include="Content\styles\news_post_responsive.css" />
+    <Content Include="Content\styles\news_post_styles.css" />
+    <Content Include="Content\styles\news_responsive.css" />
+    <Content Include="Content\styles\news_styles.css" />
+    <Content Include="Content\styles\responsive.css" />
+    <Content Include="Content\styles\teachers_responsive.css" />
+    <Content Include="Content\styles\teachers_styles.css" />
     <Content Include="Content\teachers_responsive.css" />
     <Content Include="Content\teachers_styles.css" />
     <Content Include="favicon.ico" />
@@ -294,6 +352,81 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\TITLEs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TITLEs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\TITLEs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\TITLEs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TITLEs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\READINGs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\READINGs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\READINGs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\READINGs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\READINGs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\LISTENNINGs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\LISTENNINGs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\LISTENNINGs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\LISTENNINGs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\LISTENNINGs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QUESTIONs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\QUESTIONs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\QUESTIONs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\QUESTIONs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\QUESTIONs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\THEMEs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\THEMEs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\THEMEs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\THEMEs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\THEMEs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\VOCABULARies\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\VOCABULARies\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\VOCABULARies\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\VOCABULARies\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\VOCABULARies\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PICTUREs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PICTUREs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\PICTUREs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\PICTUREs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\PICTUREs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ROLEs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ROLEs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ROLEs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ROLEs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ROLEs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\USERs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\USERs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\USERs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\USERs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\USERs\Index.cshtml" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.svg.readme" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400d41d.eot" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.svg.readme" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400d41d.eot" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.svg.readme" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900d41d.eot" />
+    <Content Include="Areas\Admin\Views\TESTs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TESTs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\TESTs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\TESTs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TESTs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TESTs\_Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PARTs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PARTs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\PARTs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\PARTs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\PARTs\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -344,17 +477,25 @@
     <Content Include="Scripts\template_js\teachers_custom.js" />
     <Content Include="Scripts\template_js\teachers_responsive.css" />
     <Content Include="Scripts\template_js\teachers_styles.css" />
+    <Content Include="Uploads\Flowers-6-10090.jpg" />
+    <Content Include="Uploads\hinh-anh-bong-hoa-dep-ruc-ro-669-6.jpg" />
+    <Content Include="Uploads\Image\become.jpg" />
+    <Content Include="Uploads\Image\Flowers-6-10090.jpg" />
+    <Content Include="Uploads\Image\hinh-anh-bong-hoa-dep-ruc-ro-669-6.jpg" />
+    <Content Include="Uploads\Lemon Tree - Nhac Khong Loi.mp3" />
     <Content Include="Uploads\New Text Document %285%29.txt" />
-    <Content Include="Web.config" />
+    <Content Include="Uploads\Shang Hai Tan piano version - Nhac Khong Loi.mp3" />
+    <Content Include="Uploads\đắc hí mp3.mp3" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -379,6 +520,15 @@
     <Content Include="Scripts\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.woff" />
     <Content Include="Scripts\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.woff2" />
     <Content Include="Scripts\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900d41d.eot" />
+    <Content Include="Views\Learn\Index.cshtml" />
+    <Content Include="Views\Learn\Part1.cshtml" />
+    <Content Include="Views\TESTs\Create.cshtml" />
+    <Content Include="Views\TESTs\Delete.cshtml" />
+    <Content Include="Views\TESTs\Details.cshtml" />
+    <Content Include="Views\TESTs\Edit.cshtml" />
+    <Content Include="Views\TESTs\Index.cshtml" />
+    <Content Include="Views\Doccument\Index.cshtml" />
+    <Content Include="Uploads\fsdv0.5.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

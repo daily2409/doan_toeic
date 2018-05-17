@@ -13,10 +13,11 @@ namespace WebsiteThiToeic.Access.EF
         public READING()
         {
             QUESTIONS = new HashSet<QUESTION>();
-            TESTs = new HashSet<TEST>();
         }
 
         public int ID { get; set; }
+
+        public int? TES_ID { get; set; }
 
         public int PAR_ID { get; set; }
 
@@ -31,7 +32,6 @@ namespace WebsiteThiToeic.Access.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<QUESTION> QUESTIONS { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TEST> TESTs { get; set; }
+        public virtual TEST TEST { get; set; }
     }
 }

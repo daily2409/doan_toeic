@@ -11,9 +11,9 @@ namespace WebsiteThiToeic.Access.EF
     {
         public int ID { get; set; }
 
-        public int REA_ID { get; set; }
+        public int? REA_ID { get; set; }
 
-        public int LIS_ID { get; set; }
+        public int? LIS_ID { get; set; }
 
         [StringLength(200)]
         public string CONTENT { get; set; }

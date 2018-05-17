@@ -9,14 +9,26 @@ namespace WebsiteThiToeic.Access.EF
     [Table("TEST")]
     public partial class TEST
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TEST()
+        {
+            LISTENNINGs = new HashSet<LISTENNING>();
+            READINGs = new HashSet<READING>();
+        }
+
         public int ID { get; set; }
 
-        public int? LIS_ID { get; set; }
+        [StringLength(50)]
+        public string NAME { get; set; }
 
-        public int? RED_ID { get; set; }
+        public DateTime? CREATE_DATE { get; set; }
 
-        public virtual LISTENNING LISTENNING { get; set; }
+        public int? LEVEL { get; set; }
 
-        public virtual READING READING { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LISTENNING> LISTENNINGs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<READING> READINGs { get; set; }
     }
 }

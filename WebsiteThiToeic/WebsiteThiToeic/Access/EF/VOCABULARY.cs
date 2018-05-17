@@ -11,8 +11,7 @@ namespace WebsiteThiToeic.Access.EF
     {
         public int ID { get; set; }
 
-        [StringLength(10)]
-        public string PIC_ID { get; set; }
+        public int? PIC_ID { get; set; }
 
         public int THE_ID { get; set; }
 

@@ -305,34 +305,40 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Tài Liệu</a>
+                            <a href="@Url.Action("Index","DOCUMENTs")"><i class="fa fa-dashboard fa-fw"></i>Tài Liệu</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Câu Hỏi<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Quản Lý Đề Thi<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Bài Đọc</a>
+                                    <a href="@Url.Action("Index","READINGs")">Bài Đọc</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Bài Nghe</a>
+                                    <a href="@Url.Action("Index","LISTENNINGs")">Bài Nghe</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index","QUESTIONs")">Câu Hỏi</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index","TESTs")">Bài Thi</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Từ Vựng</a>
+                            <a href="@Url.Action("Index","VOCABULARies")"><i class="fa fa-table fa-fw"></i> Từ Vựng</a>
                         </li>
                         <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Chủ Đề</a>
+                            <a href="@Url.Action("Index","THEMEs")"><i class="fa fa-edit fa-fw"></i> Chủ Đề</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Quản Lý Chung<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.html">Title</a>
+                                    <a href="@Url.Action("Index","TITLEs")">Title</a>
                                 </li>
                                 <li>
-                                    <a href="buttons.html">Part</a>
+                                    <a href="@Url.Action("Index","PARTs")">Part</a>
                                 </li>   
                             </ul>
                             <!-- /.nav-second-level -->

@@ -1,0 +1,88 @@
+﻿@model WebsiteThiToeic.Access.EF.QUESTION
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>QUESTION</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LISTENNING.LISTEN_URL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LISTENNING.LISTEN_URL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.READING.CONTENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.READING.CONTENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONTENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONTENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ANSWER_A)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANSWER_A)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ANSWER_B)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANSWER_B)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ANSWER_C)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANSWER_C)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ANSWER_D)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANSWER_D)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CORRECT_ANSWER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CORRECT_ANSWER)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

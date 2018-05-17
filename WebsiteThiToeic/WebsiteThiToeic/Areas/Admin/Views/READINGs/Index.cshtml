@@ -1,0 +1,97 @@
+﻿@model IEnumerable<WebsiteThiToeic.Access.EF.READING>
+
+@*@{
+        ViewBag.Title = "Index";
+    }
+
+    <h2>Bài Đọc</h2>
+
+    <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PART.CONTENT)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CONTENT)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LEVEL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TYPE)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PART.CONTENT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CONTENT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LEVEL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TYPE)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>*@
+
+<div class="row">
+    <div class="col-ms-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                DataTables Advanced Tables
+
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+            </div>
+
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <thead>
+                        <tr>
+                            <th>Tên Tài Liệu</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="even gradeA">
+                                <td>@Html.DisplayFor(modelItem => item.CONTENT)</td>
+                                <td>
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.ID })
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-6 -->
+</div>
+<!-- /.row -->

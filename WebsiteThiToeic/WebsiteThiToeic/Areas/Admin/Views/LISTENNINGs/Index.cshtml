@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebsiteThiToeic.Access.EF.LISTENNING>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr style="text-align:center;" >
+        <th>
+            @Html.DisplayNameFor(model => model.PART.CONTENT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LISTEN_URL)
+        </th>
+        <th style="margin-left:50px;">
+            @Html.DisplayNameFor(model => model.NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PICTURE_URL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CORRECT_ANSWER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LEVEL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TYPE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td style="text-align:center;">
+            @Html.DisplayFor(modelItem => item.PART.CONTENT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LISTEN_URL)
+        </td>
+        <td style="margin-left:40px;">
+            @Html.DisplayFor(modelItem => item.NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PICTURE_URL)
+        </td>
+        <td style="text-align:center;">
+            @Html.DisplayFor(modelItem => item.CORRECT_ANSWER)
+        </td>
+        <td style="text-align:center;">
+            @Html.DisplayFor(modelItem => item.LEVEL)
+        </td>
+        <td style="text-align:center;">
+            @Html.DisplayFor(modelItem => item.TYPE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

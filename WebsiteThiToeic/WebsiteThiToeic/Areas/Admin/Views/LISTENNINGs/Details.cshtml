@@ -1,0 +1,74 @@
+﻿@model WebsiteThiToeic.Access.EF.LISTENNING
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LISTENNING</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PART.CONTENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PART.CONTENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LISTEN_URL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LISTEN_URL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PICTURE_URL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PICTURE_URL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CORRECT_ANSWER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CORRECT_ANSWER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LEVEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LEVEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TYPE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TYPE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

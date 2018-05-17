@@ -1,0 +1,204 @@
+﻿@model WebsiteThiToeic.Access.EF.LISTENNING
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("_Create", "TESTs", new { ViewBag.level }, FormMethod.Post, new { enctype = "multipart/form-data", id = "frm-create" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>LISTENNING</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.PAR_ID, "PART", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("PAR_ID", null, new { @class = "form-control", onchange = "DroppdownListChange()" })
+                @Html.ValidationMessageFor(model => model.PAR_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LISTEN_URL, "FILE MP3", new { @class = "control-label col-md-2", @id = "listen" })
+            <div class="col-md-10">
+                <input type="file" id="fileUpload" name="fileUpload" />
+                <input type="hidden" id="level" value="@ViewBag.level" />
+            </div>
+        </div>
+
+        <div class="form-group" id="nameId">
+            @Html.LabelFor(model => model.NAME, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NAME, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NAME, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" id="pictureId">
+            @Html.LabelFor(model => model.PICTURE_URL, "PICTURE", new { @class = "control-label col-md-2", @id = "picture" })
+            <div class="col-md-10">
+                <input type="file" id="IfileUpload" name="IfileUpload" />
+                @*@Html.EditorFor(model => model.PICTURE_URL, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PICTURE_URL, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CORRECT_ANSWER, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CORRECT_ANSWER, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CORRECT_ANSWER, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Create" id="btn-create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+
+</div>
+<script>
+    $("#btn-createa").click(function () {
+        var fileUpload = $("#fileUpload").get(0);
+        var files = fileUpload.files;
+        var IfileUpload = $("#IfileUpload").get(0);
+        var Ifiles = IfileUpload.files;
+
+
+
+    });
+
+    $("#btn-createa").click(function () {
+        var frm = $("frm-create");
+        var partId = $("#PAR_ID").val();
+        $.ajax({
+            type: "POST",
+            url: "/TESTs/_Create",
+            data: {
+
+            },
+            success: function (data) {
+                alert(data.status);
+            }
+        });
+    });
+    function DroppdownListChange() {
+        var value = document.getElementById("PAR_ID").value;
+
+        if (value == 2) {
+
+            $("#pictureId").hide();
+        } else if (value == 3) {
+            $("#pictureId").hide();
+        } else {
+            $("#pictureId").show();
+        }
+    }
+
+
+    $('#btn-create').click(function () {
+        alert();
+        var partId = $("#PAR_ID").val();
+        // Checking whether FormData is available in browser
+        if (window.FormData !== undefined) {
+
+            var fileUpload = $("#fileUpload").get(0);
+            var files = fileUpload.files;
+            var IfileUpload = $("#IfileUpload").get(0);
+            var Ifiles = IfileUpload.files;
+              alert(files[0].name);
+            // Create FormData object
+            var fileData = new FormData();
+
+            // Looping over all files and add it to FormData object
+            for (var i = 0; i < files.length; i++) {
+                fileData.append(files[i].name, files[i]);
+                alert("for i"+i);
+            }
+            for (var j = 0; j < Ifiles.length; j++) {
+                fileData.append(files[j].name, files[j]);
+                alert("for j"+j);
+            }
+
+            // Adding one more key to FormData object
+            //fileData.append('username', "ten");
+
+            $.ajax({
+                type: "POST",
+                dateType: "json",
+                url: '/TESTs/_Create',
+                contentType: false,
+                processData: false,
+                data: fileData,
+                beforeSend: function () {
+                   alert("before send");
+                },
+                success: function (result) {
+                    alert(result);
+                },
+                error: function() {
+                    alert("err");
+                }
+            });
+        } else {
+            alert("FormData is not supported.");
+        }
+    });
+
+
+    //$('#frm-create').click(function () {
+    //    //$(this).closest('.form-group').find('.error').remove();
+    //     alert("a");
+    //    var files = $("#fileUpload").get(0).files;
+    //    if (files.length > 0) {
+    //        var fileSize = files.files[0].size / 1024 / 1024;
+    //        var fileName = f.files[0].name;
+    //        var dotPosition = fileName.lastIndexOf(".");
+    //        var fileExt = fileName.substring(dotPosition).toLowerCase();
+
+    //        //if (fileExt != ".pdf" && fileExt != ".doc" && fileExt != ".docx") {
+    //        //    $(this).parent().after('<div class="col-12 error has-error">Chỉ hỗ trợ file *.PDF, *.DOC, *.DOCX</div>');
+
+    //        //    return false;
+    //        //}
+    //        //else if (fileSize > 5) {
+    //        //    $(this).parent().after('<div class="col-12 error has-error">Dung lượng tối đa 5MB</div>');
+
+    //        //    return false;
+    //        //}
+
+    //        if (window.FormData !== undefined) {
+    //            var data = new FormData();
+    //            data.append("file" + 0, files[0]);
+
+    //            $.ajax({
+    //                type: "POST",
+    //                dateType: "json",
+    //                url: '/TESTs/_Create',
+    //                contentType: false,
+    //                processData: false,
+    //                data: data,
+    //                beforeSend: function () {
+
+    //                },
+    //                success: function (result) {
+    //                        alert(result);
+    //                }
+    //            });
+    //        } else {
+    //            alert("This browser doesn't support HTML5 file uploads!");
+    //        }
+    //    }
+    //});
+</script>

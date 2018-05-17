@@ -16,7 +16,9 @@ namespace WebsiteThiToeic
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
+                //url: "{Areas/Admin/controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                //defaults: new { controller = "DOCUMENTs", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

@@ -1,0 +1,52 @@
+﻿@*<embed src="~/Uploads/fsdv0.5.pdf" type="" width="100%" height="600px" />*@
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Home -->
+
+<div class="home">
+    <div class="home_background_container prlx_parent">
+        <div class="home_background prlx" style="background-image:url(images/courses_background.jpg)"></div>
+    </div>
+    <div class="home_content">
+        <h1>HỌC PHẦN</h1>
+    </div>
+</div>
+
+<!-- Popular -->
+
+<div class="popular page_section">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title text-center">
+                    <h1>Bài học phổ biến</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row course_boxes">
+
+            <!-- Popular Course Item -->
+            <div class="col-lg-4 course_box">
+                <div class="card">
+                    <img class="card-img-top" src="images/part1.jpg">
+                    <div class="card-body text-center">
+                        <div class="card-title"><a href="@Url.Action("Part1","Learn",new {page=1})">PDF file	</a></div>
+                        <div class="card-text"></div>
+                    </div>
+
+                </div>
+            </div>
+
+          
+
+
+        </div>
+    </div>
+</div>
+
+

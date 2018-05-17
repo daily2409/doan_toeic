@@ -1,0 +1,77 @@
+﻿
+@using PagedList.Mvc;   
+@using PagedList;
+@model IPagedList<WebsiteThiToeic.Access.EF.LISTENNING>
+
+
+@{
+    ViewBag.Title = "Part1";
+    
+
+}
+<div class="home">
+    <div class="home_background_container prlx_parent">
+        <div class="home_background prlx" style="background-image:url(images/courses_background.jpg)"></div>
+    </div>
+    <div class="home_content">
+        <h1>Hình Ảnh</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-1" style="background-color:lavender;"></div>   
+    @foreach (WebsiteThiToeic.Access.EF.LISTENNING p in Model)
+    {
+        
+        <div class="col-8" style="background-color: lavenderblush;">
+            <div class="row">
+                <p>Look at the picture and listen to the sentences. Choose the sentence that best describes the picture:</p>
+            </div>
+            <div class="row">
+                <img src="~/Uploads/Image/@p.PICTURE_URL" class="img-fluid" alt="Responsive image">
+               
+            </div>
+            <div class="row" style="margin-top: 20px; margin-bottom: 20px">
+                <audio controls>
+                    @*<source src="horse.ogg" type="audio/ogg">*@
+                    <source src="~/Uploads/@p.LISTEN_URL" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="row">
+                <nav aria-label="Page navigation example">
+                    @Html.PagedListPager(Model, page => Url.Action("Part1", new {page = page}))
+                    @*<ul class="pagination justify-content-end">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>*@
+                </nav>
+            </div>
+            <div class="row"></div>
+
+        </div>
+    }
+    <div class="col-3" style="background-color: lavender;">
+        <p style=" margin-top: 100px">Question 1</p>
+        <div class="radio">
+            <label><input type="radio" name="optradio">A</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="optradio">B</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="optradio">C</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="optradio">D</label>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+</script>

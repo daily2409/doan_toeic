@@ -16,27 +16,27 @@ namespace WebsiteThiToeic.Areas.Admin.Controllers
         private Db db = new Db();
 
         // Upload: Admin/DOCUMENTs/
-        //[HttpPost]
-        //public ActionResult Upload(FormCollection form, DOCUMENT dOCUMENT)
-        //{
-        //    var loaifile = int.Parse(form.Get("loaifile"));
-        //    var f = Request.Files[0];
-        //    if (f != null)
-        //    {
-        //        var fileName = Path.GetFileName(f.FileName);
-        //        var path = Path.Combine(Server.MapPath("~/Uploads/"), fileName);
-        //        f.SaveAs(path);
+        [HttpPost]
+        public ActionResult Upload(FormCollection form, DOCUMENT dOCUMENT)
+        {
+            var loaifile = int.Parse(form.Get("loaifile"));
+            var f = Request.Files[0];
+            if (f != null)
+            {
+                var fileName = Path.GetFileName(f.FileName);
+                var path = Path.Combine(Server.MapPath("~/Uploads/"), fileName);
+                f.SaveAs(path);
+                
 
+                dOCUMENT.URL =path +  Path.GetFileName(f.FileName);
+                dOCUMENT.NAME = fileName;
+                dOCUMENT.TYPE = loaifile;
+                db.DOCUMENTs.Add(dOCUMENT);
+                db.SaveChanges();
 
-        //        dOCUMENT.URL =  Path.GetFileName(f.FileName);
-        //        dOCUMENT.NAME = fileName;
-        //        dOCUMENT.TYPE = loaifile;
-        //        db.DOCUMENTs.Add(dOCUMENT);
-        //        db.SaveChanges();
-
-        //    }
-        //    return RedirectToAction("Index");
-        //}
+            }
+            return RedirectToAction("Index");
+        }
 
         // GET: Admin/DOCUMENTs
         public ActionResult Index()

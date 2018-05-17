@@ -9,6 +9,12 @@ namespace WebsiteThiToeic.Access.EF
     [Table("PICTURE")]
     public partial class PICTURE
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PICTURE()
+        {
+            VOCABULARies = new HashSet<VOCABULARY>();
+        }
+
         public int ID { get; set; }
 
         public string URL { get; set; }
@@ -16,6 +22,7 @@ namespace WebsiteThiToeic.Access.EF
         [StringLength(50)]
         public string NAME { get; set; }
 
-        public virtual VOCABULARY VOCABULARY { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VOCABULARY> VOCABULARies { get; set; }
     }
 }
